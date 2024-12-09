@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style> 
+  /* General Styles */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #0f1624;
+    color: white;
+}
+
+.top-banner {
+    display: flex;                      /* Use flexbox layout */
+    justify-content: center;            /* Center horizontally */
+    align-items: center;                /* Center vertically */
+    height: 75vh;                      /* Full screen height */
+    text-align: center;                 /* Center the text */
+    position: relative;                 /* To allow overlay positioning */
+    background-image: url('/static/hero-bg.jpg'); /* Correct file path */
+    background-size: cover;             /* Ensure the image covers the entire banner */
+    background-position: center;        /* Center the image */
+}
+
+.top-banner::before {
+    content: '';                         /* Empty content for the overlay */
+    position: absolute;                  /* Position it over the background */
+    top: 0;                              /* Stretch from top to bottom */
+    left: 0;                             /* Stretch from left to right */
+    width: 100%;                         /* Full width */
+    height: 100%;                        /* Full height */
+    background: rgba(255, 255, 255, 0.5); /* Light white overlay with transparency */
+    z-index: 1;                          /* Ensure overlay stays on top of the background */
+}
+
+.top-banner p {
+    margin-right: 10px;                  /* Space between the text and button */
+    z-index: 2;                          /* Ensure text stays above the overlay */
+}
+
+.enroll-btn {
+    padding: 10px 20px;                  /* Style the button */
+    cursor: pointer;                     /* Change cursor on hover */
+    z-index: 2;                          /* Ensure button stays above the overlay */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #800080;
+    position: sticky;
+    top: 40px; /* Adjusted for top banner */
+    z-index: 999;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links .dropdown {
+    position: absolute;
+    background-color: #2a3349;
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    top: 2rem;
+    left: 0;
+}
+
+.nav-links li:hover .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    margin: 0.5rem 0;
+}
+
+.header-icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.header-icons i {
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Dropdown Logos */
+.dropdown-logos {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.dropdown-logos img {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.5rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.view-btn {
+    background-color: #585ef2;
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1a2235;
+    margin-top: 2rem;
+}
+{% comment %} add company hear with css code {% endcomment %}
+
+.company-logos {
+  width: 100%;
+  overflow: hidden; /* Hide anything outside of the container */
+  padding: 20px 0;
+}
+
+.company-logos-container {
+  display: flex;
+  flex-wrap: nowrap;
+  animation: scroll 20s linear infinite; /* Scroll animation */
+}
+
+.company-logos-container img {
+  width: 150px;
+  height: auto;
+  margin: 0 20px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); /* Move completely off the container */
+  }
+}
+
+.company-logos-container img:hover {
+  transform: scale(1.1); /* Hover effect to enlarge the logos */
+  transition: transform 0.3s ease;
+}
+
+
+{% comment %} 2.7 + L Learning Hours {% endcomment %}
+.numbers-landscape {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(248, 248, 248);
+  padding: 20px 0;
+  width: 100%;
+}
+
+.numbers-content-landscape {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.numbers-row-landscape {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px; /* Adds spacing between cards */
+}
+
+.numbers-card-landscape {
+  flex: 1; /* Makes each card equal in size */
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #BF40BF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.numbers-card-landscape:hover {
+  transform: scale(1.05); /* Adds a hover effect */
+}
+
+.numbers-card-landscape h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.numbers-card-landscape p {
+  font-size: 16px;
+  color: #BF40BF;
+}
+
+.numbers-card-landscape span {
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .numbers-row-landscape {
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+    gap: 15px;
+  }
+}
+
+{% comment %} Achieve Your Goals With CA MONK {% endcomment %}
+
+
+.goals {
+    background-color: #f8f8f8;
+  }
+  
+  .goals-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .goals-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  .goals-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .goals-card h3 {
+    font-size: 24px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+  
+  .goal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .goal svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .goal h4 {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  span {
+    color: #ff5733;
+  }
+  
+
+  {% comment %} Explore Courses By Categories {% endcomment %}
+  .course-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0;
+  }
+  
+  .course-category-card {
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    width: 280px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    cursor: pointer; /* This changes the cursor to a pointer when hovering */
+  }
+  
+  .course-category-card .icon {
+    position: absolute;
+    left: -20px;
+    top: 20px;
+    font-size: 24px;
+    color: #007bff;
+    transition: transform 0.3s ease;
+  }
+  
+  .course-category-card:hover .icon {
+    transform: translateX(10px);
+  }
+  
+  .course-category-card h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .course-category-card p.mono {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .course-category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Optional: You can add this to make the hover effect more noticeable */
+  .course-category-card:hover {
+    background-color: #e6f7ff;
+  }
+  
+
+
+  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Career</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+        <!-- Header Section -->
+        <header>
+            <div class="navbar">
+                <div class="logo">Fast Education</div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Interview Prep</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Workshops</a></li>
+                                <li><a href="#">Mock Interviews</a></li>
+
+                                <!-- Logos -->
+                                <div class="dropdown-logos">
+                                    <img src="https://via.placeholder.com/50" alt="Logo 1">
+                                    <img src="https://via.placeholder.com/50" alt="Logo 2">
+                                    <img src="https://via.placeholder.com/50" alt="Logo 3">
+                                </div>
+                            </ul>
+                        </li>
+                        <li><a href="#">Masterclass</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Finance Basics</a></li>
+                                <li><a href="#">Taxation</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">UpSkill</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Excel</a></li>
+                                <li><a href="#">Python for Finance</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Hire From Us</a></li>
+                    </ul>
+                </nav>
+                <div class="header-icons">
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="#"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </header>
+    
+       
+    <!-- Top Scrolling Banner -->
+    <div class="top-banner">
+        <p>Join the CA</p>
+        <button class="enroll-btn">Enroll</button>
+    </div>
+
+
+    <!-- 2.7+L Learning hear-->
+
+    <section class="numbers-landscape">
+        <div class="numbers-content-landscape">
+          <div class="numbers-row-landscape">
+            <div class="numbers-card-landscape">
+              <h3>2.7+ L</h3>
+              <p>Learning Hours</p>
+            </div>
+            <div class="numbers-card-landscape">
+              <h3>1:1</h3>
+              <p>Mentorship</p>
+            </div>
+            <div class="numbers-card-landscape">
+              <h3>500+</h3>
+              <p>Mentors</p>
+            </div>
+            <div class="numbers-card-landscape">
+              <h3>100+</h3>
+              <p><span>Companies Hiring</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+<!-- add comapny name hear-->
+<section class="company-logos">
+    <div class="company-logos-container">
+      <img src="/static/1.jpeg" alt="Company 1">
+      <img src="/static/1.jpeg" alt="Company 2">
+      <img src="/static/2.jpeg" alt="Company 3">
+      <img src="/static/2.jpeg" alt="Company 4">
+      <img src="/static/3.jpeg" alt="Company 5">
+      <img src="/static/4.jpeg" alt="Company 6">
+      <img src="/static/4.jpeg" alt="Company 1">
+      <img src="/static/1.jpeg" alt="Company 2">
+      <img src="/static/1.jpeg" alt="Company 3">
+      <img src="/static/2.jpeg" alt="Company 4">
+      <img src="/static/2.jpeg" alt="Company 5">
+      <img src="/static/4.jpeg" alt="Company 6">
+      <img src="/static/3.jpeg" alt="Company 1">
+      <img src="/static/1.jpeg" alt="Company 2">
+      <img src="/static/4.jpeg" alt="Company 3">
+      <img src="/static/2.jpeg" alt="Company 4">
+      <img src="/static/1.jpeg" alt="Company 5">
+      <img src="/static/4.jpeg" alt="Company 6">
+      <img src="/static/2.jpeg" alt="Company 1">
+      <img src="/static/1.jpeg" alt="Company 2">
+      <img src="/static/3.jpeg" alt="Company 3">
+      <img src="/static/2.jpeg" alt="Company 4">
+      <img src="/static/4.jpeg" alt="Company 5">
+      <img src="/static/4.jpeg" alt="Company 6">
+      <!-- Add more logos as needed -->
+    </div>
+  </section>
+
+
+  {% comment %} Explore Courses By Categories {% endcomment %}
+  <section class="course-categories">
+    <div class="course-category-card">
+      <div class="icon">&#8594;</div>
+      <h2>Interview Prep</h2>
+      <p class="mono">Cracking interview made easy</p>
+    </div>
+    <div class="course-category-card">
+      <div class="icon">&#8594;</div>
+      <h2>Masterclasses</h2>
+      <p class="mono">Build foundation of technical & soft skills</p>
+    </div>
+    <div class="course-category-card">
+      <div class="icon">&#8594;</div>
+      <h2>Upskill</h2>
+      <p class="mono">Learn tools & skills for faster growth</p>
+    </div>
+    <div class="course-category-card">
+      <div class="icon">&#8594;</div>
+      <h2>Mentorship</h2>
+      <p class="mono">Get 1:1 guidance from industry experts</p>
+    </div>
+    <div class="course-category-card">
+      <div class="icon">&#8594;</div>
+      <h2>Free Courses</h2>
+      <p class="mono">Explore free courses from CA Monk</p>
+    </div>
+    <div class="course-category-card">
+      <div class="icon">&#8594;</div>
+      <h2>Placement Drive</h2>
+      <p class="mono">Get placed at top companies - SAMBHAV</p>
+    </div>
+  </section>
+  
+
+  {% comment %} Achieve Your Goals With Fast Edu {% endcomment %}
+
+  <section class="goals" spellcheck="false"> 
+    <div class="goals-content"> 
+      <div class="goals-row"> 
+        <div class="goals-card"> 
+          <div class="goals-card-img-container"> 
+            <img alt="goal-img-1" class="goal-img-1 lazy" data-src="/static/1.jpeg"> 
+            <div class="goal-card-back"></div> 
+            <div class="goal-card-front"> 
+              <h3 style="opacity: 1;">Banking</h3> 
+            </div> 
+          </div> 
+        </div> 
+        <div class="goals-card"> 
+          <h2> Achieve Your <span>Goals</span><br> With Fast eud </h2> 
+          <div class="goal"> 
+            <svg width="39" height="33" viewBox="0 0 39 33" fill="none" xmlns="/static/1.jpeg" xmlns:xlink="/static/1.jpeg"> 
+              <rect x="0.0400391" width="38" height="33" fill="url(#pattern0)"></rect> 
+              <defs> 
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"> 
+                  <use xlink:href="#image0_1153_2982" transform="matrix(0.003125 0 0 0.00359848 0 -0.0307765)"></use> 
+                </pattern> 
+                <image id="/static/1.jpeg" width="320" height="295" xlink:href="/static/1.jpeg></image> 
+              </defs> 
+            </svg> 
+            <h4>Get 1:1 Mentorship by Top 1%</h4> 
+          </div> 
+          <div class="goal"> 
+            <svg width="39" height="33" viewBox="0 0 39 33" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+              <rect x="0.0400391" width="38" height="33" fill="url(#pattern0)"></rect> 
+              <defs> 
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"> 
+                  <use xlink:href="#image0_1153_2982" transform="matrix(0.003125 0 0 0.00359848 0 -0.0307765)"></use> 
+                </pattern> 
+                <image id="image0_1153_2982" width="320" height="295" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAEnCAYAAADYYZpIAAAAAXNSR0IArs4c6QAAIABJREFUeF7tnX1wXMWZ7t/uMyMJXWGMISqHdaVSqRRF+bIJxBuMJY3maEYaI3sdMFgLhCQsIbAJHwGH5OYDsoYlG+AGirAmQBJCQgzsstoQAAM0AOoCAkCIBAMAjDAYOiEKkEABDwgAAP0ACpCggAIBIMADDAYOqFKEAABDwjAAD2AipAgAALBIAADDIZOqBIEQMADAjBAD6AiJAiAQDAIwACDoROqBAEQ8IAADNADqAgJAiAQDAIwwGDohCpBAAQ8IAAD9AAqQoIACASDAAwwGDqhShAAAQ8IwAA9gIqQIAACwSAAAwyGTqgSBEDAAwIwQA+gIiQIgEAwCPx/CX7izVVp8dsAAAAASUVORK5CYII="></image> 
+              </defs> 
+            </svg> 
+            <h4>Network with aspirational Peer Group</h4> 
+          </div> 
+          <div class="goal"> 
+            <svg width="39" height="33" viewBox="0 0 39 33" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+              <rect x="0.0400391" width="38" height="33" fill="url(#pattern0)"></rect> 
+              <defs> 
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"> 
+                  <use xlink:href="#image0_1153_2982" transform="matrix(0.003125 0 0 0.00359848 0 -0.0307765)"></use> 
+                </pattern> 
+                <image id="image0_1153_2982" width="320" height="295" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAEnCAYAAADYYZpIAAAAAXNSR0IArs4c6QAAIABJREFUeF7tnX1wXMWZ7t/uMyMJXWGMISqHdaVSqRRF+bIJxBuMJY3maEYaI3sdMFgLhCQsIbAJHwGH5OYDsoYlG+AGirAmQBJCQgzsstoQgAAM0AOoCAkCIBAMAjDAYOiEKkEABDwgAAP0ACpCggAIBIMADDAYOqFKEAABDwjAAD2AipAgAALBIAADDIZOqBIEQMADAjBAD6AiJAiAQDAIwACDoROqBAEQ8IAADNADqAgJAiAQDAIwwGDohCpBAAQ8IAAD9AAqQoIACASDAAwwGDqhShAAAQ8IwAA9gIqQIAACwSAAAwyGTqgSBEDAAwIwQA+gIiQIgEAwCPx/CX7izVVp8dsAAAAASUVORK5CYII="></image> 
+              </defs> 
+            </svg> 
+            <h4>Get Interview Ready</h4> 
+          </div> 
+          <div class="goal"> 
+            <svg width="39" height="33" viewBox="0 0 39 33" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+              <rect x="0.0400391" width="38" height="33" fill="url(#pattern0)"></rect> 
+              <defs> 
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"> 
+                  <use xlink:href="#image0_1153_2982" transform="matrix(0.003125 0 0 0.00359848 0 -0.0307765)"></use> 
+                </pattern> 
+                <image id="image0_1153_2982" width="320" height="295" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAEnCAYAAADYYZpIAAAAAXNSR0IArs4c6QAAIABJREFUeF7tnX1wXMWZ7t/uMyMJXWGMISqHdaVSqRRF+bIJxBuMJY3maEYaI3sdMFgLhCQsIbAJHwGH5OYDsoYlG+AGirAmQBJCQgzsstoQQIBsaUYkCIBAMAjDAYOiEKkEABDwgAAP0ACpCggAIBIMADDAYOqFKEAABDwjAAD2AipAgAALBIAADDIZOqBIEQMADAjBAD6AiJAiAQDAIwACDoROqBAEQ8IAADNADqAgJAiAQDAIwwGDohCpBAAQ8IAAD9AAqQoIACASDAAwwGDqhShAAAQ8IwAA9gIqQIAACwSAAAwyGTqgSBEDAAwIwQA+gIiQIgEAwCPx/CX7izVVp8dsAAAAASUVORK5CYII="></image> 
+              </defs> 
+            </svg> 
+            <h4>Undertake Structured Courses by Experts</h4> 
+          </div> 
+          <div class="goal"> 
+            <svg width="39" height="33" viewBox="0 0 39 33" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+              <rect x="0.0400391" width="38" height="33" fill="url(#pattern0)"></rect> 
+              <defs> 
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"> 
+                  <use xlink:href="#image0_1153_2982" transform="matrix(0.003125 0 0 0.00359848 0 -0.0307765)"></use> 
+                </pattern> 
+                <image id="image0_1153_2982" width="320" height="295" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAEE6oEARDwgAAM0AOoCAkCIBAMAjDAYOiEKkEABDwgAAP0ACpCggAIBIMADDAYOqFKEAABDwjAAD2AipAgAALBIAADDIZOqBIEQMADAjBAD6AiJAiAQDAIwACDoROqBAEQ8IAADNADqAgJAiAQDAIwwGDohCpBAAQ8IAAD9AAqQoIACASDAAwwGDqhShAAAQ8IwAA9gIqQIAACwSAAAwyGTqgSBEDAAwIwQA+gIiQIgEAwCPx/CX7izVVp8dsAAAAASUVORK5CYII="></image> 
+              </defs> 
+            </svg> 
+            <h4>Crack your Dream Job Role</h4> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+  </section>
+  
+
+{% comment %} Featured Courses {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featured Courses</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .heading {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .heading h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    .heading p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .card-content p {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #0066cc;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="heading">
+      <h1>Featured Courses</h1>
+      <p>Isn't learning an investment your future deserves?</p>
+    </div>
+    <div class="cards">
+      <!-- Card 1 -->
+      <a href="https://example.com/interview-workshop" class="card" target="_blank">
+        <img src="/static/3.jpeg" alt="Getting Interview Ready Workshop">
+        <div class="card-content">
+          <span class="tag">Interview Prep</span>
+          <h3>Getting Interview Ready Workshop</h3>
+          <p>Trusted by 12,000+</p>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="https://example.com/financial-modeling" class="card" target="_blank">
+        <img src="/static/2.jpeg" alt="Financial Modeling Workshop">
+        <div class="card-content">
+          <span class="tag">Upskill</span>
+          <h3>Financial Modeling Workshop</h3>
+          <p>Trusted by 3,621+</p>
+        </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="https://example.com/excel-mastery" class="card" target="_blank">
+        <img src="/static/4.jpeg" alt="Microsoft Excel Mastery Workshop">
+        <div class="card-content">
+          <span class="tag">Upskill</span>
+          <h3>Microsoft Excel Mastery Workshop</h3>
+          <p>Trusted by 5,587+</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+  
+     <!-- Hero Section -->
+     <main>
+        <section class="hero">
+            <h1>Skyrocket Your Finance Career</h1>
+            <p>Learn industry-relevant skills from top mentors.<br>Network with an aspirational peer group.</p>
+            <button class="view-btn">View Courses</button>
+        </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Fast Education</p>
+    </footer>
+
+    <script>
+
+        {% comment %} Achieve Your Goals With CA MONK {% endcomment %}
+let textToChange = document.querySelector(".goal-card-front h3");
+
+let domainArray = [
+  "Consulting",
+  "Finance",
+  "Taxation",
+  "Audit",
+  "Analytics",
+  "Banking",
+];
+
+let i = 0;
+
+function changeText() {
+  textToChange.style.opacity = 0;
+  setTimeout(() => {
+    textToChange.textContent = domainArray[i];
+    textToChange.style.opacity = 1;
+  }, 500);
+  i = (i + 1) % domainArray.length;
+}
+
+setInterval(changeText, 3500);
+
+changeText();
+        
+        // Dropdown functionality
+document.querySelectorAll('.nav-links li').forEach((navItem) => {
+    navItem.addEventListener('mouseover', () => {
+        const dropdown = navItem.querySelector('.dropdown');
+        if (dropdown) dropdown.style.display = 'block';
+    });
+
+    navItem.addEventListener('mouseout', () => {
+        const dropdown = navItem.querySelector('.dropdown');
+        if (dropdown) dropdown.style.display = 'none';
+    });
+});
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+ {% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Scroll Banner */
+.scroll-banner {
+  background: #4c2ed2;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  animation: scroll 5s linear infinite;
+  font-size: 20px;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.enroll-button {
+  background: #fff;
+  color: #4c2ed2;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  margin-top: 50px;  /* Adjusting header to avoid overlapping with scroll banner */
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li ul.dropdown {
+  display: none;
+  position: absolute;
+  background: #fff;
+  list-style: none;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul li:hover ul.dropdown {
+  display: block;
+}
+
+.header-buttons button {
+  background: #4c2ed2;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Banner */
+.banner {
+  text-align: center;
+  padding: 100px 20px;
+  background: #e4e4e4;
+}
+
+.banner h1 {
+  font-size: 36px;
+}
+
+.view-courses {
+  background: #4c2ed2;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.map-container {
+  width: 100%;
+  height: 200px;
+}
+ </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CA Fast - Your Future, Your Way</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+  <!-- Scroll Banner -->
+  <div class="scroll-banner">
+    <span>Join the CA</span>
+    <button class="enroll-button">Enroll Now</button>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">CA Fast</div>
+    <nav>
+      <ul>
+        <li><a href="#">Interview Prep</a>
+          <ul class="dropdown">
+            <li>Live Interview Prep Workshop</li>
+            <li>Articleship Training Masterclass</li>
+            <li>Free Resources</li>
+          </ul>
+        </li>
+        <li><a href="#">Masterclass</a></li>
+        <li><a href="#">UpSkill</a></li>
+        <li><a href="#">Tools</a></li>
+        <li><a href="#">Hire From Us</a></li>
+      </ul>
+    </nav>
+    <div class="header-buttons">
+      <button class="cart">🛒</button>
+      <button class="login">Login</button>
+    </div>
+  </header>
+
+  <!-- Main Banner -->
+  <main>
+    <section class="banner">
+      <h1>Skyrocket Your Finance Career</h1>
+      <p>Learn industry-relevant skills from top mentors. Network with an aspirational peer group.</p>
+      <button class="view-courses">View Courses</button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509514!2d144.95605431531585!3d-37.81720997975173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727a486d41d102!2sVictoria%20State%20Library%20of%20Victoria!5e0!3m2!1sen!2sau!4v1630976199973!5m2!1sen!2sau"
+        width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <p>© 2024 CA Fast. All Rights Reserved.</p>
+    <script>// Add any JavaScript interactivity
+document.querySelector('.enroll-button').addEventListener('click', () => {
+  alert('Enroll Now button clicked!');
+});
+
+    </script>
+  </footer>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+
+{% comment %} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Text Change Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 1200px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-box {
+      position: relative;
+      padding: 10px 20px;
+      background-color: #f0f4ff;
+      color: #1a2eb3;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 600px;
+    }
+
+    .content h1 {
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .content li {
+      font-size: 1rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content li::before {
+      content: "✔";
+      color: #4caf50;
+      font-size: 1.2rem;
+    }
+
+    .image {
+      flex-shrink: 0;
+    }
+
+    .image img {
+      max-width: 300px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Text Box -->
+    <div class="text-box" id="dynamic-text">Banking</div>
+
+    <!-- Content -->
+    <div class="content">
+      <h1>Achieve Your <span style="color: #4b4bd8;">Goals</span> With Fast Education</h1>
+      <ul>
+        <li>Get 1:1 Mentorship by Top 1%</li>
+        <li>Network with aspirational Peer Group</li>
+        <li>Get Interview Ready</li>
+        <li>Undertake Structured Courses by Experts</li>
+        <li>Crack your Dream Job Role</li>
+      </ul>
+    </div>
+
+    <!-- Image -->
+    <div class="image">
+      <img src="/static/2.jpeg" alt="Mentorship">
+    </div>
+  </div>
+
+  <script>
+    // Words to display dynamically
+    const words = ["Banking", "Customer Support", "Finance", "Consulting", "Education"];
+    let index = 0;
+
+    // Function to change text every 2 seconds
+    setInterval(() => {
+      const textBox = document.getElementById("dynamic-text");
+      textBox.textContent = words[index];
+      index = (index + 1) % words.length; // Loop through words
+    }, 2000);
+  </script>
+</body>
+</html>
+
+ {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Image with Rating</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-section {
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .image-section img {
+      width: 300px; /* बढ़ाया हुआ साइज */
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .rating {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .rating span {
+      color: #ff9900; /* स्टार का रंग */
+      font-size: 1.5rem;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 700px;
+    }
+
+    .content h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    .content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .content li {
+      font-size: 1.2rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content li::before {
+      content: "✔";
+      color: #4caf50;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Image Section -->
+    <div class="image-section">
+      <img id="dynamic-image" src="/static/1.jpeg" alt="Dynamic Image">
+      <div class="rating">
+        <span>⭐</span>
+        <span id="dynamic-rating">4.8</span>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <h1>Achieve Your <span style="color: #4b4bd8;">Goals</span> With CA Fast</h1>
+      <ul>
+        <li>Get 1:1 Mentorship by Top 1%</li>
+        <li>Network with aspirational Peer Group</li>
+        <li>Get Interview Ready</li>
+        <li>Undertake Structured Courses by Experts</li>
+        <li>Crack your Dream Job Role</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Images array for dynamic change
+    const images = ["/static/1.jpeg", "/static/2.jpeg", "/static/3.jpeg", "/static/4.jpeg", "/static/5.jpeg"];
+    const ratings = [4.5, 4.6, 4.7, 4.8, 4.9];
+    let index = 0;
+
+    // Function to change image and rating every 2 seconds
+    setInterval(() => {
+      const imageElement = document.getElementById("dynamic-image");
+      const ratingElement = document.getElementById("dynamic-rating");
+
+      imageElement.src = images[index]; // Change image source
+      ratingElement.textContent = ratings[index].toFixed(1); // Change rating
+
+      index = (index + 1) % images.length; // Loop through images and ratings
+    }, 2000);
+  </script>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Image with Name</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-section {
+      position: relative;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .image-section img {
+      width: 300px; /* बढ़ाया हुआ साइज */
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* नाम के लिए स्टाइल */
+    .name {
+      position: absolute;
+      top: 20px; /* इमेज के ऊपर के लिए */
+      right: 20px; /* इमेज के दाईं ओर */
+      font-size: 1.5rem;
+      color: #333;
+      background: rgba(255, 255, 255, 0.7); /* बैकग्राउंड पारदर्शी */
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* छाया */
+      font-weight: bold;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 700px;
+    }
+
+    .content h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    .content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .content li {
+      font-size: 1.2rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content li::before {
+      content: "✔";
+      color: #4caf50;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Image Section -->
+    <div class="image-section">
+      <img id="dynamic-image" src="your-image.jpg" alt="Dynamic Image">
+      <div class="name" id="dynamic-name">John Doe</div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <h1>Achieve Your <span style="color: #4b4bd8;">Goals</span> With FAst edu</h1>
+      <ul>
+        <li>Get 1:1 Mentorship by Top 1%</li>
+        <li>Network with aspirational Peer Group</li>
+        <li>Get Interview Ready</li>
+        <li>Undertake Structured Courses by Experts</li>
+        <li>Crack your Dream Job Role</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Images and names array for dynamic change
+    const images = ["/static/1.jpeg", "/static/2.jpeg", "/static/3.jpeg", "/static/4.jpeg", "/static/5.jpeg"];
+    const names = ["John Doe", "Sarah Lee", "Michael Brown", "Emily Davis", "Daniel Smith"];
+    let index = 0;
+
+    // Function to change image and name every 2 seconds
+    setInterval(() => {
+      const imageElement = document.getElementById("dynamic-image");
+      const nameElement = document.getElementById("dynamic-name");
+
+      imageElement.src = images[index]; // Change image source
+      nameElement.textContent = names[index]; // Change name
+
+      index = (index + 1) % images.length; // Loop through images and names
+    }, 2000);
+  </script>
+</body>
+</html>
+
